@@ -1,0 +1,65 @@
+#!\usr\bin\env python
+#-*-coding: utf-8-*-
+import os
+import re
+import socket
+import time
+import smtplib
+import urllib
+import urllib.request
+from email.mime.text import MIMEText
+ 
+#发送邮件的基本函数，参数依次如下
+# smtp服务器地址、邮箱用户名，邮箱秘密，发件人地址，收件地址（列表的方式），邮件主题，邮件html内容
+def sendEmail(mail_host,mail_user,mail_pass,sender,mailto_list,subject,msghtml):
+    me = "定位信息"+"<"+sender+">"
+    msg = MIMEText(msghtml,_subtype='plain')
+    msg['Subject'] = subject
+    msg['From'] = me
+    msg['To'] = ";".join(mailto_list)                #将收件人列表以‘；’分隔
+    try:
+        server = smtplib.SMTP()
+        server.connect(mail_host)                            #连接服务器
+        server.starttls()                                  #gmail need!
+        server.login(mail_user,mail_pass)               #登录操作
+        server.sendmail(me, mailto_list, msg.as_string())
+        server.close()
+        return (True)
+    except Exception as e:
+        print(e)
+        return (False)
+ 
+#检查网络连通性
+def check_network():
+    while True:
+        try:
+            page=urllib.request.urlopen('http://www.baidu.com')
+            html=page.read()
+            print ("Network is Ready!")
+            break
+        except Exception as e:
+            print(e)
+            print ("Network is not ready,Sleep 5s...")
+            try:
+                page2=urllib.request.urlopen('https://www.google.com.hk')
+                html2=urllib
+                print ("Networkipv6 is Ready!")
+                break
+            except Exception as e2:
+                print(e2)
+                print ("Networkipv6 is not ready")
+            time.sleep(5)
+    return True
+ 
+def send_msg(title, msg):
+    socket.setdefaulttimeout(6)      #超时限制
+    check_network()
+    while True:
+        if(sendEmail("smtp.126.com",'xxxxxx','xxxxxx','xxxxxx@126.com',['xxxxxx@qq.com'],title,msg)):
+            print('mail1')
+            break
+        else:
+            if(sendEmail("smtp.gmail.com",'xxxxx','xxxxx','xxxxx@gmail.com',['xxxxx@qq.com'],title,msg)):
+                print('mail2')
+                break
+        time.sleep(5)
