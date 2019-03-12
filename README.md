@@ -28,3 +28,6 @@ if_objective()
 get_dis()
 4.修改查询信息：
 save_msg()
+
+地图库地址：http://dev.maxmind.com/geoip/geoip2/geolite2
+该部分程序参考自：潇潇雨雨 https://www.imooc.com/article/38672
