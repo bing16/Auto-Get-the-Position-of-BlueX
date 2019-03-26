@@ -36,4 +36,4 @@ get_location.py
 send_msg
 
 地图库地址：http://dev.maxmind.com/geoip/geoip2/geolite2
-该部分程序参考自：潇潇雨雨 https://www.imooc.com/article/38672
+该部分程序参考自：https://www.jianshu.com/p/eb756fc2d3b8
