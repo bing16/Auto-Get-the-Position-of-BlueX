@@ -22,12 +22,18 @@
 功能实现（基于截图、区域rgb色彩匹配、图像识别）：
 1.区域划分：
 字典存储各模块对应的x, y位置--objective
+各元素的位置--position 
 2.匹配对象：
-if_objective()
+if_objective() 
 3.距离记录：
-get_dis()
+get_dis() 
 4.修改查询信息：
-save_msg()
+save_msg() 
+5.获取当前的ip并匹配实际经纬度：
+get_ip.py
+get_location.py 
+6.发送信息：
+send_msg
 
 地图库地址：http://dev.maxmind.com/geoip/geoip2/geolite2
 该部分程序参考自：潇潇雨雨 https://www.imooc.com/article/38672
